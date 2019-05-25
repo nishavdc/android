@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public String createOrderSummery(int price)
     {
 
-        String priceMessage= "Name=kaptain Kunal \nQuantity: "+quantity+"\nTotal:$ "+(price) + "\nThank You!";
+        String priceMessage= "Name=Nisha \nQuantity: "+quantity+"\nTotal:$ "+(price) + "\nThank You!";
         displayMessage(priceMessage);
         return priceMessage;
     }
@@ -79,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + number);
     }
 
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice (int number) {
-        TextView orderSummeryTextView = (TextView) findViewById(R.id.order_summery_text_view);
-        orderSummeryTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
+//    /**
+//     * This method displays the given price on the screen.
+//     */
+//    private void displayPrice (int number) {
+//        TextView orderSummeryTextView = (TextView) findViewById(R.id.order_summery_text_view);
+//        orderSummeryTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+//    }
 
     /**
      * This method displays the given text on the screen.
