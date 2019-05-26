@@ -9,6 +9,7 @@
 package com.example.android.justjava;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -74,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void displayQuantity(int number) {
+    private void displayQuantity(int numberofcoffees) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText("" + numberofcoffees);
     }
 
 //    /**
@@ -93,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
     private void displayMessage(String message)
     {
         TextView orderSummeryTextView = (TextView) findViewById(R.id.order_summery_text_view);
+        /** (TextView) is used to cast view type into TextView type.
+         * Because findViewById has a return type of View and we cannot use .setText on View type **/
         orderSummeryTextView.setText(message);
+        //orderSummeryTextView.setTextColor(Color.BLUE);
+
     }
 }
