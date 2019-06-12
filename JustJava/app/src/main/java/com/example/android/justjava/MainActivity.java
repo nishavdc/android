@@ -12,8 +12,13 @@ package com.example.android.justjava;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -21,8 +26,12 @@ import java.text.NumberFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity = 0;
-//    int PriceOfOne=10;
+    int quantity = 1;
+    int priceOfWippedCream =1;
+    int priceOfChocolte = 2;
+    int priceOfOne = 5;
+    int maxCups=10;
+    int minCups =1;
 
     @Override
 
@@ -35,32 +44,73 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price=calculateprice();
-        createOrderSummery(price);
+        //to check if the user needs wipped cream topping
+        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.wippedCreamCheckBox);
+        boolean hasWippedCream = whippedCreamCheckBox.isChecked();
+        //to check if the user needs Chocolate topping
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolateCheckBox);
+        boolean hasChocolate = chocolateCheckBox.isChecked();
+        //to get user name
+        EditText nameString = (EditText) findViewById(R.id.nameField);
+        String nameOfPerson = nameString.getText().toString();
+        //calculates the total price
+        int price=calculateprice(hasWippedCream,hasChocolate);
+        createOrderSummery(price,hasWippedCream,hasChocolate,nameOfPerson);
     }
 
-    /**to show the order summery**/
-    public String createOrderSummery(int price)
+
+    /**to show the order summery
+     * @param nameOfPerson gives the name of the customer
+     * @param hasChocolate to check whetehr the user needs chocolate topping
+     * @param hasWippedCream to check whether the user needs wipped cream
+     * @return  order summery**/
+    public String createOrderSummery(int price, boolean hasWippedCream,boolean hasChocolate,String nameOfPerson)
     {
 
-        String priceMessage= "Name=Nisha \nQuantity: "+quantity+"\nTotal:$ "+(price) + "\nThank You!";
+        String priceMessage = "Name: "+nameOfPerson;
+        priceMessage += "\nAdd whipped cream? " + hasWippedCream;
+        priceMessage += "\nAdd chocolate? " + hasChocolate;
+        priceMessage += "\nQuantity: " + quantity;
+        priceMessage += "\nTotal: $" + price;
+        priceMessage += "\nThank you!";
         displayMessage(priceMessage);
         return priceMessage;
     }
 
 
     /**Calculates the price of the order based on the current quantity.**/
-    private int calculateprice()
+    private int calculateprice(boolean hasWippedCream, boolean hasChocolate)
     {
-        int price=quantity *5 ;
-        return price;
+        if(hasWippedCream && hasChocolate) {
+            int price = quantity*(priceOfOne+ priceOfChocolte + priceOfWippedCream);
+            return price;
+        }
+        else if(hasChocolate)
+        {
+            int price = quantity*(priceOfOne+priceOfChocolte);
+            return price;
+        }
+        else if(hasWippedCream)
+        {
+            int price = quantity*(priceOfOne+priceOfWippedCream);
+            return price;
+        }
+        else
+            return quantity*priceOfOne;
     }
 
     /**
      * This method is called when the increment button is clicked.
      */
     public void increment(View view) {
-        quantity = quantity + 1;
+        if(quantity<maxCups) {
+            quantity = quantity + 1;
+        }
+        else
+        {
+            Toast.makeText(this,"You cannot have more than than "+maxCups+" coffees",Toast.LENGTH_SHORT).show();
+
+        }
         displayQuantity(quantity);
     }
 
@@ -68,7 +118,14 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the decrement button is clicked.
      */
     public void decrement(View view) {
-        quantity = quantity - 1;
+        if(quantity>minCups) {
+            quantity = quantity - 1;
+        }
+        else
+        {
+            Toast.makeText(this,"You cannot have less than "+minCups+" coffee",Toast.LENGTH_SHORT).show();
+        }
+
         displayQuantity(quantity);
     }
 

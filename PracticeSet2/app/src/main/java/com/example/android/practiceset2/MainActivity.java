@@ -2,11 +2,12 @@ package com.example.android.practiceset2;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -46,4 +47,5 @@ public class MainActivity extends AppCompatActivity {
         TextView t = (TextView) findViewById(R.id.display_text_view_3);
         t.setText(text);
     }
+
 }
