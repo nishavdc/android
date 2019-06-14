@@ -24,14 +24,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="sans-serif-light"
-                android:text="toppings"
+                android:text="@string/toppings"
                 android:textAllCaps="true"
-                android:textColor="@android:color/black" />
+                style="@style/HeaderTextStyle" />
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+                <!--android:fontFamily="sans-serif-light"-->
+
+                <!--android:textColor="@android:color/black"-->
+
 
             <CheckBox
                 android:id="@+id/wippedCreamCheckBox"
@@ -54,14 +58,16 @@
 
         <TextView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif-light"
             android:text="QUANTITY"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            style="@style/HeaderTextStyle" />
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+            <!--android:fontFamily="sans-serif-light"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:textSize="16sp" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,15 +101,18 @@
 
         <TextView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Order Summery"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:text="ORDER SUMMERY"
+            style="@style/HeaderTextStyle" />
+        <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:fontFamily="sans-serif-light"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:textSize="16sp" />-->
+
+             <!--to display the order summery text view-->
 
         <TextView
             android:id="@+id/order_summery_text_view"
